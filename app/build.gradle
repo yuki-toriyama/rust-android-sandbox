@@ -31,6 +31,20 @@ android {
     }
 }
 
+apply plugin: 'org.mozilla.rust-android-gradle.rust-android'
+
+cargo {
+    module = "src/main/rust/hello-world"
+    libname = "hello-world"
+    targets = ["arm", "arm64", "x86", "x86_64"]
+}
+
+tasks.whenTaskAdded { task ->
+    if (task.name == "javaPreCompileDebug" || task.name == "javaPreCompileRelease") {
+        task.dependsOn "cargoBuild"
+    }
+}
+
 dependencies {
 
     implementation 'androidx.core:core-ktx:1.7.0'
