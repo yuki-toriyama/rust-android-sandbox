@@ -35,7 +35,7 @@ apply plugin: 'org.mozilla.rust-android-gradle.rust-android'
 
 cargo {
     module = "src/main/rust/hello-world"
-    libname = "hello-world"
+    libname = "helloworld"
     targets = ["arm", "arm64", "x86", "x86_64"]
 }
 
